@@ -1,8 +1,8 @@
 import express from 'express';
 const app = express();
 
-import productsRouter from './routes/products.router.js';
-import cartsRouter from './routes/carts.router.js';
+import productsRouter from './src/routes/products.router.js';
+import cartsRouter from './src/routes/carts.router.js';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
