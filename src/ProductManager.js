@@ -38,8 +38,8 @@ export class ProductManager {
         this.#id = await this.getIdProduct() + 1;
         let products = await this.getProducts();
         products.push({
-            ...product,
-            id: this.#id
+            id: this.#id,
+            ...product
         });
         await this.saveProducts(products);
         return ({ ...product, id: this.#id })

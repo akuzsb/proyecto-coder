@@ -17,7 +17,7 @@ export const getProductById = async (req, res) => {
         const product = await productManager.getProductById(pid);
         res.json(product);
     } catch (error) {
-        res.status(404).json({ message: error.message });
+        res.status(500).json({ message: error.message });
     }
 }
 
@@ -34,7 +34,7 @@ export const createProduct = async (req, res) => {
         let newProduct = await productManager.addProduct({ title, description, code, price, status, stock, category, thumbnails });
         res.json({ message: 'Product created successfully.', id: newProduct.id });
     } catch (error) {
-        return res.status(400).json({ message: error.message });
+        return res.status(500).json({ message: error.message });
     }
 }
 
@@ -44,7 +44,7 @@ export const updateProduct = async (req, res) => {
         await productManager.updateProduct({ id: pid, product: req.body});
         res.json({ message: 'Product updated successfully.' });
     } catch (error) {
-        return res.status(400).json({ message: error.message });
+        return res.status(500).json({ message: error.message });
     }
 }
 
@@ -54,6 +54,6 @@ export const deleteProduct = async (req, res) => {
         await productManager.deleteProduct(pid);
         res.json({ message: 'Product deleted successfully.' });
     } catch (error) {
-        return res.status(400).json({ message: error.message });
+        return res.status(500).json({ message: error.message });
     }
 }
