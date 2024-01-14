@@ -57,7 +57,7 @@ export class ProductManager {
 
     async updateProduct({ id, product }) {
         let products = await this.getProducts();
-        const index = products.findIndex(p => p.id === id);
+        const index = products.findIndex(p => p.id == id);
         if (index === -1) {
             throw new Error('Not found');
         }
