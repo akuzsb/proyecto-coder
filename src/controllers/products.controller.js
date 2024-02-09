@@ -1,59 +1,95 @@
-import { ProductManager } from '../ProductManager.js'
+import { ProductManager } from '../dao/ProductManager.js'
+import ProductsDAO from '../dao/products.dao.js'
 
 const productManager = new ProductManager('./src/products.json');
+// const productsDaoManager = new ProductsDAO();
 
 export const getProducts = async (req, res) => {
     let { limit } = req.query;
-    const products = await productManager.getProducts();
-    if (limit) {
-        products.splice(limit);
+    try {
+        let products = await ProductsDAO.getAll(limit);
+        res.json(products);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: 'Hubo un error al obtener los productos'});
     }
-    res.json(products);
 }
 
 export const getProductById = async (req, res) => {
     const { pid } = req.params;
+    if (!pid) {
+        return res.status(400).json({ message: 'id es requerido' });
+    }
     try {
-        const product = await productManager.getProductById(pid);
+        let [product] = await ProductsDAO.getById(pid);
+        if (!product){
+            return res.status(404).json({ message: 'Producto no encontrado' });
+        }
         res.json(product);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.log(error)
+        res.status(500).json({ message: 'Hubo un error al obtener el producto'});
     }
 }
 
 export const createProduct = async (req, res) => {
     let { title, description, code, price, status, stock, category, thumbnails } = req.body;
 
-    if (!title || !description || !code || !price || !stock || !category) {
-        return res.status(400).json({ message: 'Faltan datos para crear un producto' });
+    if (!title || !description || !code || !price || !category) {
+        return res.status(400).json({ message: 'Faltan datos para crear un producto', data: req.body  });
     }
     status = status ?? true;
     thumbnails = thumbnails ?? [];
 
+    let filename = req.file ? req.file.filename : null;
+    if (filename) {
+        thumbnails.push(filename);
+    }
+
     try {
-        let newProduct = await productManager.addProduct({ title, description, code, price, status, stock, category, thumbnails });
-        res.json({ message: 'Product created successfully.', id: newProduct.id });
+        let newProduct = await ProductsDAO.addProduct({ title, description, code, price, status, stock, category, thumbnails });
+        res.json({ message: 'Producto creado con éxito', id: newProduct._id });
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        console.log(error)
+        return res.status(500).json({ message: 'Hubo un error al crear el producto' });
     }
 }
 
 export const updateProduct = async (req, res) => {
     const { pid } = req.params;
+    if (!pid) {
+        return res.status(400).json({ message: 'id es requerido' });
+    }
+    if (!Object.keys(req.body).length) {
+        return res.status(400).json({ message: 'No hay datos para actualizar' });
+    }
     try {
-        await productManager.updateProduct({ id: pid, product: req.body});
-        res.json({ message: 'Product updated successfully.' });
+        let [product] = await ProductsDAO.getById(pid);
+        if (!product){
+            return res.status(404).json({ message: 'Producto no encontrado' });
+        }
+        await ProductsDAO.updateProduct(pid, req.body);
+        res.json({ message: 'Producto actualizado con éxito'});
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        console.log(error)
+        return res.status(500).json({ message: 'Hubo un error al actualizar el producto' });
     }
 }
 
 export const deleteProduct = async (req, res) => {
     const { pid } = req.params;
+    if (!pid) {
+        return res.status(400).json({ message: 'id es requerido' });
+    }
     try {
-        await productManager.deleteProduct(pid);
-        res.json({ message: 'Product deleted successfully.' });
+        let [product] = await ProductsDAO.getById(pid);
+        if (!product){
+            return res.status(404).json({ message: 'Producto no encontrado' });
+        }
+        await ProductsDAO.deleteProduct(pid);
+        res.json({ message: 'Producto eliminado con éxito'});
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        console.log(error)
+        return res.status(500).json({ message: 'Hubo un error al eliminar el producto' });
     }
 }
