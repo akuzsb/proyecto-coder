@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Add Product</h1>
+    <form id="productForm" class="container" enctype="multipart/form-data">      
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" value="My Product Title">
+      </div>
+      
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="description" name="description" value="My Product Description">
+      </div>
+      
+      <div class="mb-3">
+        <label for="code" class="form-label">Code</label>
+        <input type="text" class="form-control" id="code" name="code" value="ABC123">
+      </div>
+      
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" id="price" name="price" value="999">
+      </div>
+      
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" id="category" name="category" value="Electronics">
+      </div>
+      
+      <div class="mb-3">
+        <label for="stock" class="form-label">Stock</label>
+        <input type="number" class="form-control" id="stock" name="stock" value="10">
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input type="file" class="form-control" id="image" name="image">
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+
+<script src="../js/addProduct.js"></script>

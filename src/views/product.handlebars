@@ -1,0 +1,39 @@
+
+<!-- Product Details -->
+<div class="container">
+  <div class="row ">
+    <div class="col-md-6 offset-md-3">
+      <h1>{{product.title}}</h1>
+      <p><span class="badge text-bg-info"> {{product.category}}</span> {{product.description}} </p>
+      <!-- Thumbnails -->
+      {{#if product.thumbnails}}
+      <div class="thumbnails">
+        {{#each product.thumbnails}}
+        <div class="text-center">
+          <img src="http://localhost:4000/images/products/{{this}}" alt="Thumbnail" style="max-height: 40vh;">
+        </div>
+        {{/each}}
+      </div>
+      {{/if}}
+      
+      {{#if product.stock}}
+      <p>${{product.price}}</p>
+      <p>Stock: {{product.stock}}</p>
+        {{!-- <a href="/products/{{product._id}}/edit" class="btn btn-primary">Edit</a> --}}
+        {{else}}
+        <p class="text-danger">Out of stock</p>
+        {{/if}}
+    </div>
+  </div>
+</div>
+
+<!-- Buttons -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      {{!-- <a href="/" class="btn btn-secondary">Home</a> --}}
+      <a href="/products" class="btn btn-secondary">Back to Product List</a>
+    </div>
+  </div>
+</div>
+
