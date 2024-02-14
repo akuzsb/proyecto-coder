@@ -4,7 +4,7 @@ console.log('Hello from chat.js!')
 const socket = io();
 
 socket.on('messages', (data) => {
-    console.log(data);
+    // console.log(data);
     listadoChat.innerHTML = data.map((message) => `<div>
         <strong>${message.user}</strong>:
         <span>${message.message}</span>
@@ -22,9 +22,9 @@ const formMensaje = document.getElementById('message-form');
 
 formMensaje.addEventListener('submit', (e) => {
     e.preventDefault();
-    const mensaje = document.getElementById('message-input').value;
-    const usuario = document.getElementById('username').value;
-    socket.emit('new-message', { user: usuario, message: mensaje });
+    const mensaje = document.getElementById('message-input');
+    const usuario = document.getElementById('username');
+    socket.emit('new-message', { user: usuario.value, message: mensaje.value });
 
     mensaje.value = '';
 });
