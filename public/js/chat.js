@@ -1,11 +1,7 @@
-
-console.log('Hello from chat.js!')
-
 const socket = io();
 
 socket.on('messages', (data) => {
-    // console.log(data);
-    listadoChat.innerHTML = data.map((message) => `<div>
+    listadoChat.innerHTML = data.reverse().map((message) => `<div>
         <strong>${message.user}</strong>:
         <span>${message.message}</span>
     </div>`).join(' ');
