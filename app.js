@@ -13,12 +13,19 @@ const httpServer = app.listen(PORT, () => {
 });
 
 export const socketServer = new Server(httpServer);
+// Helper function to compare two strings
+const isEqual = (str1, str2) => {
+    return str1 === str2;
+};
 
-app.engine('handlebars', engine());
+app.engine('handlebars', engine({
+    helpers: {
+        isEqual 
+    }
+}));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
-
 
 
 import productsRouter from './src/routes/products.router.js';
@@ -27,6 +34,25 @@ import productsViewRouter from './src/routes/productsViewRouter.js';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+let connected = false;
+try {
+    await mongoose.connect(MONGO_URI)
+    console.log('Database connected');
+    connected = true;
+} catch (error) {
+    console.log('Error connecting to the database');
+    console.log(error);
+}
+
+// primero valido si la base esta conectada, si no lo esta redirecciono todo a error
+app.use((req, res, next) => {
+    if (connected) {
+        next();
+    } else {
+        res.render('error', { message: 'Error connecting to the database' })
+    }
+});
 
 app.get('/', (req, res) => { res.redirect('/home') });
 
@@ -42,9 +68,6 @@ app.get('/chat', (req, res) => {
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 
-mongoose.connect(MONGO_URI)
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.log('Error connecting to MongoDB', err));
 
 
 import MessagesDAO from './src/dao/messagesDao.js';
