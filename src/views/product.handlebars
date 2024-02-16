@@ -6,7 +6,7 @@
       <div class="d-flex justify-content-between">
         <h1 class="mr-auto">{{product.title}}</h1>
         <div>
-          <button class="btn btn-sm btn-outline-secondary" data-id="{{product._id}}" id="btnEditar" >Editar</button>
+          <a class="btn btn-sm btn-outline-secondary" href="/products/{{product._id}}/editar">Editar</a>
           <button class="btn btn-sm btn-outline-danger" data-id="{{product._id}}" id="btnEliminar">Eliminar</button>
         </div>
       </div>
