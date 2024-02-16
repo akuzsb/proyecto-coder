@@ -2,12 +2,15 @@ import productsSchema from "../schemas/products.schema.js";
 
 class ProductsDAO {
 
-    static async getAll(limit = null) {
-        if (limit) {
-            return await productsSchema.find().limit(limit).lean();
+    static async getAll({ limit = null, orderBy = 'title-asc' }) {
+        let order = orderBy.split('-');
+        let sortBy = {};
+        sortBy[order[0]] = order[1] === 'asc' ? 1 : -1;
+        const products = await productsSchema.find().sort(sortBy).lean();
+        return {
+            products,
+            orderBy
         }
-        return await productsSchema.find().lean();
-
     }
 
     static async getById(id) {
