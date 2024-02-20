@@ -4,10 +4,17 @@ import ProductsDAO from '../dao/products.dao.js';
 const router = Router();
 
 router.get('/', async (req, res) => {
-    let { limit, orderBy } = req.query;
+    let { limit, order, page } = req.query;
+    page = page ? parseInt(page) : 1;
+    limit = limit ? parseInt(limit) : 8;
     try {
-        const products = await ProductsDAO.getAll({limit, orderBy});
-        res.render("products", { products: products.products, orderBy: products.orderBy});
+        const products = await ProductsDAO.getAllPaginated({limit, order, page});
+        products.prevLink = products.hasPrevPage ? `/products?limit=${limit}&order=${order}&page=${products.prevPage}` : null;
+        products.nextLink = products.hasNextPage ? `/products?limit=${limit}&order=${order}&page=${products.nextPage}` : null;
+        products.isValid = (page > 0 && page <= products.totalPages);
+        
+        console.log(products)
+        res.render("products", { products, orderBy: order});
     } catch (error) {
         console.log(error)
         res.render('error', { message: 'Hubo un error al obtener los productos' });

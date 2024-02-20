@@ -1,49 +1,86 @@
-<div class="container">
-
-  <div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between">
     <div class="mr-auto">
       <h1>Productos</h1>
     </div>
     <div class="d-flex align-items-center">
       <select class="form-select me-2" name="orderBy" id="orderBy">
-        <option value="title-asc" {{#if (isEqual orderBy "title-asc")}}selected{{/if}}>Nombre (A-Z)</option>
-        <option value="title-desc" {{#if (isEqual orderBy "title-desc")}}selected{{/if}}>Nombre (Z-A)</option>
-        <option value="price-asc" {{#if (isEqual orderBy "price-asc")}}selected{{/if}}>Precio (Menor a Mayor)</option>
-        <option value="price-desc" {{#if (isEqual orderBy "price-desc")}}selected{{/if}}>Precio (Mayor a Menor)</option>
+        <option value="title-asc" {{#if (isEqual orderBy "title-asc" )}}selected{{/if}}>Nombre (A-Z)</option>
+        <option value="title-desc" {{#if (isEqual orderBy "title-desc" )}}selected{{/if}}>Nombre (Z-A)</option>
+        <option value="price-asc" {{#if (isEqual orderBy "price-asc" )}}selected{{/if}}>Precio (Menor a Mayor)</option>
+        <option value="price-desc" {{#if (isEqual orderBy "price-desc" )}}selected{{/if}}>Precio (Mayor a Menor)</option>
       </select>
-      </select>
+      <div>
+        <select name="limit" id="limit" class="form-select me-4">
+          <option value="4" {{#if (isEqual products.limit 4 )}}selected{{/if}}>4</option>
+          <option value="8" {{#if (isEqual products.limit 8 )}}selected{{/if}}>8</option>
+          <option value="16" {{#if (isEqual products.limit 16 )}}selected{{/if}}>16</option>
+          <option value="32" {{#if (isEqual products.limit 32 )}}selected{{/if}}>32</option>
+        </select>
+      </div>
       <a href="/products/agregar" class="btn btn-dark">Agregar</a>
     </div>
   </div>
 
   <!-- Product list -->
 
-  <div class="row p-2">
-    {{#if products.length}}
-      {{#each products}}
-        <div class="col-12 col-md-3">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">{{title}}</h5>
-              <small>{{category}}</small>
-              {{#if stock}}
-                <p class="card-text text-success">${{price}}</p>
-                <a href="/products/{{_id}}" class="btn btn-primary">Comprar</a>
-              {{else}}
-                <p class="card-text text-danger">No disponible</p>
-              {{/if}}
-            </div>
-          </div>
-        </div>
-      {{/each}}
-    {{else}}
-      <div class="col-12">
-        <div class="alert alert-warning">
-          <p>No hay productos</p>
+  <div class="row justify-content-center p-2">
+    {{#if products.isValid}}
+    {{#each products.docs}}
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card mb-4" style="padding: 0; height: 90%;">
+        <div class="card-body">
+          <h5 class="card-title">{{title}}</h5>
+          <small>{{category}}</small>
+          {{#if stock}}
+          <p class="card-text text-success d-flex justify-content-between">
+            <span>${{price}}</span>
+            <a href="/products/{{_id}}" class="btn btn-primary">Comprar</a>
+          </p>
+          {{else}}
+          <p class="card-text text-danger">No disponible</p>
+          {{/if}}
         </div>
       </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="col-12">
+      <div class="alert alert-warning">
+        <p>Hubo un error al cargar los productos</p>
+      </div>
+    </div>
     {{/if}}
   </div>
-</div>
+
+  {{#if products.isValid}}
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      {{#if products.hasPrevPage}}
+      <li class="page-item">
+        <a class="page-link" href="{{products.prevLink}}" tabindex="-1" aria-disabled="true">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="{{products.prevLink}}">{{products.prevPage}}</a></li>
+      {{else}}
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+      </li>
+      {{/if}}
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">{{products.page}}</a>
+      </li>
+
+      {{#if products.hasNextPage}}
+      <li class="page-item"><a class="page-link" href="{{products.nextLink}}">{{products.nextPage}}</a></li>
+      <li class="page-item">
+        <a class="page-link" href="{{products.nextLink}}">Next</a>
+      </li>
+      {{else}}
+      <li class="page-item disabled">
+        <a class="page-link" href="#">Next</a>
+      </li>
+      {{/if}}
+    </ul>
+  </nav>
+  {{/if}}
 
 <script src="../js/products.js"></script>
