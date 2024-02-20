@@ -2,13 +2,24 @@ import { ProductManager } from '../dao/ProductManager.js'
 import ProductsDAO from '../dao/products.dao.js'
 
 const productManager = new ProductManager('./src/products.json');
-// const productsDaoManager = new ProductsDAO();
 
 export const getProducts = async (req, res) => {
-    let { limit } = req.query;
+    let { limit, order, page } = req.query;
+    page = page ? parseInt(page) : 1;
+    console.log('page', page)
     try {
-        let products = await ProductsDAO.getAll(limit);
-        res.json(products);
+        const products = await ProductsDAO.getAllPaginated({limit, order, page});
+        products.prevLink = products.hasPrevPage ? `/api/products?limit=${limit}&order=${order}&page=${products.prevPage}` : null;
+        products.nextLink = products.hasNextPage ? `/api/products?limit=${limit}&order=${order}&page=${products.nextPage}` : null;
+        products.isValid = (page > 0 && page <= products.totalPages);
+
+        const { docs, ...rest } = products;
+
+        res.json({
+            status: 'success',
+            payload: docs,
+            ...rest
+        });
     } catch (error) {
         console.log(error)
         res.status(500).json({ message: 'Hubo un error al obtener los productos'});
