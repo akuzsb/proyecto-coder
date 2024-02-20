@@ -1,0 +1,482 @@
+[
+    {
+        "title": "Camiseta de algodón blanco",
+        "description": "Camiseta de algodón suave y cómoda",
+        "code": "001",
+        "price": 15.99,
+        "status": true,
+        "stock": 100,
+        "category": "Camisetas",
+        "thumbnails": [
+            "1708042843701-308771108.png"
+        ]
+    },
+    {
+        "title": "Póster de paisaje montañoso",
+        "description": "Póster de alta calidad con vista a las montañas",
+        "code": "002",
+        "price": 9.99,
+        "status": true,
+        "stock": 50,
+        "category": "Posters",
+        "thumbnails": [
+            "1707520147226-16849088.png"
+        ]
+    },
+    {
+        "title": "Auriculares Bluetooth",
+        "description": "Auriculares inalámbricos con sonido de alta fidelidad",
+        "code": "003",
+        "price": 49.99,
+        "status": true,
+        "stock": 0,
+        "category": "Electrónica",
+        "thumbnails": [
+            "1708042716208-688500823.png"
+        ]
+    },
+    {
+        "title": "Collar de plata con piedra lunar",
+        "description": "Collar elegante con una piedra lunar incrustada",
+        "code": "004",
+        "price": 39.99,
+        "status": false,
+        "stock": 15,
+        "category": "Joyas",
+        "thumbnails": [
+            "1708042225202-218320385.png"
+        ]
+    },
+    {
+        "title": "Camiseta negra de manga larga",
+        "description": "Camiseta de algodón negro con mangas largas",
+        "code": "005",
+        "price": 19.99,
+        "status": true,
+        "stock": 70,
+        "category": "Camisetas",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Teléfono inteligente de última generación",
+        "description": "Teléfono con cámara de alta resolución y pantalla OLED",
+        "code": "006",
+        "price": 699.99,
+        "status": true,
+        "stock": 0,
+        "category": "Electrónica",
+        "thumbnails": [
+            "1708042125142-75169225.png"
+        ]
+    },
+    {
+        "title": "Póster de la Vía Láctea",
+        "description": "Póster de la galaxia con colores vibrantes",
+        "code": "007",
+        "price": 12.99,
+        "status": true,
+        "stock": 40,
+        "category": "Posters",
+        "thumbnails": [
+            "1708042011377-456281061.png"
+        ]
+    },
+    {
+        "title": "Pendientes de plata con circonitas",
+        "description": "Pendientes elegantes con circonitas incrustadas",
+        "code": "008",
+        "price": 29.99,
+        "status": true,
+        "stock": 25,
+        "category": "Joyas",
+        "thumbnails": [
+            "1707921578951-770250810.png"
+        ]
+    },
+    {
+        "title": "Altavoz Bluetooth resistente al agua",
+        "description": "Altavoz portátil con certificación IPX7",
+        "code": "009",
+        "price": 34.99,
+        "status": false,
+        "stock": 0,
+        "category": "Electrónica",
+        "thumbnails": [
+            "1707520173575-242826448.png"
+        ]
+    },
+    {
+        "title": "Póster de la Aurora Boreal",
+        "description": "Póster de la aurora boreal en el cielo nocturno",
+        "code": "010",
+        "price": 14.99,
+        "status": true,
+        "stock": 35,
+        "category": "Posters",
+        "thumbnails": [
+            "1708042843701-308771108.png"
+        ]
+    },
+    {
+        "title": "Camiseta de rayas azules",
+        "description": "Camiseta de algodón con rayas horizontales azules",
+        "code": "011",
+        "price": 17.99,
+        "status": true,
+        "stock": 60,
+        "category": "Camisetas",
+        "thumbnails": [
+            "1707520147226-16849088.png"
+        ]
+    },
+    {
+        "title": "Tableta gráfica profesional",
+        "description": "Tableta con lápiz sensible a la presión para diseño digital",
+        "code": "012",
+        "price": 129.99,
+        "status": true,
+        "stock": 5,
+        "category": "Electrónica",
+        "thumbnails": [
+            "1708042716208-688500823.png"
+        ]
+    },
+    {
+        "title": "Anillo de compromiso de diamante",
+        "description": "Anillo de oro blanco con un diamante central",
+        "code": "013",
+        "price": 999.99,
+        "status": true,
+        "stock": 3,
+        "category": "Joyas",
+        "thumbnails": [
+            "1708042225202-218320385.png"
+        ]
+    },
+    {
+        "title": "Camiseta roja con estampado de león",
+        "description": "Camiseta de algodón rojo con estampado de león",
+        "code": "014",
+        "price": 22.99,
+        "status": true,
+        "stock": 0,
+        "category": "Camisetas",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Portátil ligero y compacto",
+        "description": "Portátil delgado con procesador rápido y pantalla HD",
+        "code": "015",
+        "price": 899.99,
+        "status": false,
+        "stock": 20,
+        "category": "Electrónica",
+        "thumbnails": [
+            "1708042125142-75169225.png"
+        ]
+    },
+    {
+        "title": "Póster de cielo estrellado",
+        "description": "Póster del cielo nocturno lleno de estrellas",
+        "code": "016",
+        "price": 11.99,
+        "status": true,
+        "stock": 38,
+        "category": "Posters",
+        "thumbnails": [
+            "1708042011377-456281061.png"
+        ]
+    },
+    {
+        "title": "Collar de oro con perla",
+        "description": "Collar elegante con una perla natural",
+        "code": "017",
+        "price": 59.99,
+        "status": true,
+        "stock": 18,
+        "category": "Joyas",
+        "thumbnails": [
+            "1707921578951-770250810.png"
+        ]
+    },
+    {
+        "title": "Altavoz Bluetooth con luces LED",
+        "description": "Altavoz con luces LED que cambian de color al ritmo de la música",
+        "code": "018",
+        "price": 49.99,
+        "status": true,
+        "stock": 0,
+        "category": "Electrónica",
+        "thumbnails": [
+            "1707520173575-242826448.png"
+        ]
+    },
+    {
+        "title": "Póster de playa tropical",
+        "description": "Póster de una hermosa playa tropical con palmeras",
+        "code": "019",
+        "price": 16.99,
+        "status": true,
+        "stock": 42,
+        "category": "Posters",
+        "thumbnails": [
+            "1708042843701-308771108.png"
+        ]
+    },
+    {
+        "title": "Camiseta gris con diseño abstracto",
+        "description": "Camiseta de algodón gris con un diseño abstracto",
+        "code": "020",
+        "price": 18.99,
+        "status": true,
+        "stock": 55,
+        "category": "Camisetas",
+        "thumbnails": [
+            "1707520147226-16849088.png"
+        ]
+    },
+    {
+        "title": "Póster de la aurora austral",
+        "description": "Póster de la espectacular aurora austral en la Antártida",
+        "code": "021",
+        "price": 18.99,
+        "status": true,
+        "stock": 30,
+        "category": "Posters",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Smartwatch deportivo con GPS",
+        "description": "Smartwatch resistente al agua con seguimiento de actividad y GPS integrado",
+        "code": "022",
+        "price": 79.99,
+        "status": true,
+        "stock": 25,
+        "category": "Electrónica",
+        "thumbnails": [
+            "1708042225202-218320385.png"
+        ]
+    },
+    {
+        "title": "Anillo de plata con circonita",
+        "description": "Anillo de plata con circonita cúbica de alta calidad",
+        "code": "023",
+        "price": 29.99,
+        "status": true,
+        "stock": 15,
+        "category": "Joyas",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Camiseta de manga larga a rayas",
+        "description": "Camiseta de algodón suave con rayas horizontales",
+        "code": "024",
+        "price": 24.99,
+        "status": true,
+        "stock": 40,
+        "category": "Camisetas",
+        "thumbnails": [
+            "1708042011377-456281061.png"
+        ]
+    },
+    {
+        "title": "Teclado mecánico para gaming",
+        "description": "Teclado con interruptores mecánicos y retroiluminación RGB",
+        "code": "025",
+        "price": 89.99,
+        "status": true,
+        "stock": 20,
+        "category": "Electrónica",
+        "thumbnails": [
+            "1707921578951-770250810.png"
+        ]
+    },
+    {
+        "title": "Collar de oro con diamante",
+        "description": "Collar elegante con un diamante central de alta calidad",
+        "code": "026",
+        "price": 699.99,
+        "status": true,
+        "stock": 5,
+        "category": "Joyas",
+        "thumbnails": [
+            "1707520173575-242826448.png"
+        ]
+    },
+    {
+        "title": "Póster de la naturaleza salvaje",
+        "description": "Póster de paisaje natural con vida salvaje",
+        "code": "027",
+        "price": 16.99,
+        "status": true,
+        "stock": 35,
+        "category": "Posters",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Auriculares inalámbricos con cancelación de ruido",
+        "description": "Auriculares premium con tecnología de cancelación activa de ruido",
+        "code": "028",
+        "price": 149.99,
+        "status": true,
+        "stock": 10,
+        "category": "Electrónica",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Collar de plata con colgante de corazón",
+        "description": "Collar de plata con un colgante en forma de corazón",
+        "code": "029",
+        "price": 39.99,
+        "status": true,
+        "stock": 20,
+        "category": "Joyas",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Camiseta estampada con motivo floral",
+        "description": "Camiseta de algodón con estampado floral primaveral",
+        "code": "030",
+        "price": 14.99,
+        "status": true,
+        "stock": 50,
+        "category": "Camisetas",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Laptop gaming con tarjeta gráfica dedicada",
+        "description": "Laptop potente diseñada para juegos con tarjeta gráfica dedicada",
+        "code": "031",
+        "price": 1299.99,
+        "status": true,
+        "stock": 3,
+        "category": "Electrónica",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Pulsera de plata con piedra lunar",
+        "description": "Pulsera elegante con una piedra lunar natural incrustada",
+        "code": "032",
+        "price": 49.99,
+        "status": true,
+        "stock": 8,
+        "category": "Joyas",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Póster de la selva tropical",
+        "description": "Póster de la exuberante selva tropical con cascadas",
+        "code": "033",
+        "price": 17.99,
+        "status": true,
+        "stock": 25,
+        "category": "Posters",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Gafas de sol polarizadas",
+        "description": "Gafas de sol con lentes polarizadas para una visión sin reflejos",
+        "code": "034",
+        "price": 34.99,
+        "status": true,
+        "stock": 15,
+        "category": "Electrónica",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Anillo de compromiso de oro rosa con diamante",
+        "description": "Anillo de compromiso elegante con un diamante central",
+        "code": "035",
+        "price": 899.99,
+        "status": true,
+        "stock": 2,
+        "category": "Joyas",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Camiseta con estampado de animal salvaje",
+        "description": "Camiseta de algodón con estampado de un animal salvaje",
+        "code": "036",
+        "price": 21.99,
+        "status": true,
+        "stock": 40,
+        "category": "Camisetas",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Reloj de pulsera con cronógrafo",
+        "description": "Reloj de pulsera con función de cronógrafo y correa de cuero",
+        "code": "037",
+        "price": 79.99,
+        "status": true,
+        "stock": 10,
+        "category": "Electrónica",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Póster de la luna llena",
+        "description": "Póster de la majestuosa luna llena en el cielo nocturno",
+        "code": "038",
+        "price": 15.99,
+        "status": true,
+        "stock": 35,
+        "category": "Posters",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Collar de oro con diamantes",
+        "description": "Collar deslumbrante con múltiples diamantes incrustados",
+        "code": "039",
+        "price": 1599.99,
+        "status": true,
+        "stock": 1,
+        "category": "Joyas",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    },
+    {
+        "title": "Camiseta básica de color sólido",
+        "description": "Camiseta de algodón básica en varios colores sólidos",
+        "code": "040",
+        "price": 12.99,
+        "status": true,
+        "stock": 60,
+        "category": "Camisetas",
+        "thumbnails": [
+            "1708042178309-18330620.png"
+        ]
+    }
+]
