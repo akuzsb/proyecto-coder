@@ -1,35 +1,31 @@
-
-<!-- Product Details -->
-<div class="container">
-  <div class="row ">
-    <div class="col-md-6 offset-md-3">
-      <div class="d-flex justify-content-between">
-        <h1 class="mr-auto">{{product.title}}</h1>
-        <div>
-          <a class="btn btn-sm btn-outline-secondary" href="/products/{{product._id}}/editar">Editar</a>
-          <button class="btn btn-sm btn-outline-danger" data-id="{{product._id}}" id="btnEliminar">Eliminar</button>
-        </div>
+<div class="row ">
+  <div class="col-md-6 offset-md-3">
+    <div class="d-flex justify-content-between">
+      <h1 class="mr-auto">{{product.title}}</h1>
+      <div>
+        <a class="btn btn-sm btn-outline-secondary" href="/products/{{product._id}}/editar">Editar</a>
+        <button class="btn btn-sm btn-outline-danger" data-id="{{product._id}}" id="btnEliminar">Eliminar</button>
       </div>
-      <p><span class="badge text-bg-info"> {{product.category}}</span> {{product.description}} </p>
-      <!-- Thumbnails -->
-      {{#if product.thumbnails}}
-      <div class="thumbnails">
-        {{#each product.thumbnails}}
-        <div class="text-center">
-            <img src="/images/products/{{this}}" alt="Thumbnail" style="max-height: 40vh;">
-          </div>
-        {{/each}}
-      </div>
-      {{/if}}
-      
-      {{#if product.stock}}
-      <p>${{product.price}}</p>
-      <p>Stock: {{product.stock}}</p>
-        {{!-- <a href="/products/{{product._id}}/edit" class="btn btn-primary">Edit</a> --}}
-        {{else}}
-        <p class="text-danger">Out of stock</p>
-        {{/if}}
     </div>
+    <p><span class="badge text-bg-info"> {{product.category}}</span> {{product.description}} </p>
+    <!-- Thumbnails -->
+    {{#if product.thumbnails}}
+    <div class="thumbnails">
+      {{#each product.thumbnails}}
+      <div class="text-center">
+        <img src="/images/products/{{this}}" alt="Thumbnail" style="max-height: 40vh;">
+      </div>
+      {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if product.stock}}
+    <p>${{product.price}}</p>
+    <p>Stock: {{product.stock}}</p>
+    {{!-- <a href="/products/{{product._id}}/edit" class="btn btn-primary">Edit</a> --}}
+    {{else}}
+    <p class="text-danger">Out of stock</p>
+    {{/if}}
   </div>
 </div>
 
@@ -44,4 +40,3 @@
 </div>
 
 <script src="../js/product.js"></script>
-
