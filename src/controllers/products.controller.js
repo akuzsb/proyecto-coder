@@ -6,7 +6,6 @@ const productManager = new ProductManager('./src/products.json');
 export const getProducts = async (req, res) => {
     let { limit, order, page } = req.query;
     page = page ? parseInt(page) : 1;
-    console.log('page', page)
     try {
         const products = await ProductsDAO.getAllPaginated({limit, order, page});
         products.prevLink = products.hasPrevPage ? `/api/products?limit=${limit}&order=${order}&page=${products.prevPage}` : null;

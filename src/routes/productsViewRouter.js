@@ -12,8 +12,6 @@ router.get('/', async (req, res) => {
         products.prevLink = products.hasPrevPage ? `/products?limit=${limit}&order=${order}&page=${products.prevPage}` : null;
         products.nextLink = products.hasNextPage ? `/products?limit=${limit}&order=${order}&page=${products.nextPage}` : null;
         products.isValid = (page > 0 && page <= products.totalPages);
-        
-        console.log(products)
         res.render("products", { products, orderBy: order});
     } catch (error) {
         console.log(error)
@@ -32,7 +30,6 @@ router.get('/:id/editar', async (req, res) => {
         if (!product){
             return res.render('error', { message: 'Producto no encontrado' });
         }
-        console.log(product)
         res.render("editProduct", { product });
     } catch (error) {
         console.log(error)
