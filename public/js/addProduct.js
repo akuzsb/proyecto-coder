@@ -18,7 +18,6 @@ formulario.addEventListener('submit', (e) => {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data, 'data')
         if (data.message) {
             alert(data.message);
             if (data.id){
