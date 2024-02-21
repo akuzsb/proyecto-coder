@@ -31,6 +31,7 @@ app.use(express.static('public'));
 import productsRouter from './src/routes/products.router.js';
 import cartsRouter from './src/routes/carts.router.js';
 import productsViewRouter from './src/routes/productsViewRouter.js';
+import cartsViewRouter from './src/routes/cartsViewRouter.js';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -61,6 +62,7 @@ app.get('/home', (req, res) => {
 });
 
 app.use('/products', productsViewRouter);
+app.use('/cart', cartsViewRouter);
 app.get('/chat', (req, res) => {
     res.render('chat');
 });
