@@ -13,3 +13,10 @@ btnEliminar.addEventListener('click', () => {
             });
     }
 });
+
+const btnAgregar = document.getElementById('btnAgregar');
+
+btnAgregar.addEventListener('click', () => {
+    const id = btnAgregar.dataset.id;
+    console.log(id)
+});

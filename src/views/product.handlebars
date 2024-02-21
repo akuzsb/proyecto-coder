@@ -1,5 +1,5 @@
-<div class="row ">
-  <div class="col-md-6 offset-md-3">
+<div class="">
+  <div class="col-md-8 offset-md-3">
     <div class="d-flex justify-content-between">
       <h1 class="mr-auto">{{product.title}}</h1>
       <div>
@@ -20,9 +20,13 @@
     {{/if}}
 
     {{#if product.stock}}
-    <p>${{product.price}}</p>
-    <p>Stock: {{product.stock}}</p>
-    {{!-- <a href="/products/{{product._id}}/edit" class="btn btn-primary">Edit</a> --}}
+    <div class="d-flex justify-content-between">
+      <div>
+        <p class="text-left fs-3">Precio: <b>${{product.price}}</b></p>
+        <p class="stock">Cantidad disponible: <b>{{product.stock}}</b></p>
+      </div>
+        <button class="btn btn-primary" id="btnAgregar" data-id="{{product._id}}"><span class="fs-5">Agregar al carrito</span></button>
+    </div>
     {{else}}
     <p class="text-danger">Out of stock</p>
     {{/if}}
@@ -30,13 +34,11 @@
 </div>
 
 <!-- Buttons -->
-<div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
       {{!-- <a href="/" class="btn btn-secondary">Home</a> --}}
-      <a href="/products" class="btn btn-secondary">Back to Product List</a>
+      <a href="/products" class="btn btn-secondary btn-sm">Back to Product List</a>
     </div>
   </div>
-</div>
 
 <script src="../js/product.js"></script>
