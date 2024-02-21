@@ -4,12 +4,12 @@ import ProductsDAO from '../dao/products.dao.js'
 const productManager = new ProductManager('./src/products.json');
 
 export const getProducts = async (req, res) => {
-    let { limit, order, page } = req.query;
+    let { limit, order, page, query } = req.query;
     page = page ? parseInt(page) : 1;
     try {
-        const products = await ProductsDAO.getAllPaginated({limit, order, page});
-        products.prevLink = products.hasPrevPage ? `/api/products?limit=${limit}&order=${order}&page=${products.prevPage}` : null;
-        products.nextLink = products.hasNextPage ? `/api/products?limit=${limit}&order=${order}&page=${products.nextPage}` : null;
+        const products = await ProductsDAO.getAllPaginated({limit, order, page, query});
+        products.prevLink = products.hasPrevPage ? `/api/products?limit=${limit}&order=${order}&page=${products.prevPage}&query=${query}` : null;
+        products.nextLink = products.hasNextPage ? `/api/products?limit=${limit}&order=${order}&page=${products.nextPage}&query=${query}` : null;
         products.isValid = (page > 0 && page <= products.totalPages);
 
         const { docs, ...rest } = products;

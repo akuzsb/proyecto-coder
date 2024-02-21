@@ -2,7 +2,7 @@ import productsSchema from "../schemas/products.schema.js";
 
 class ProductsDAO {
 
-    static async getAllPaginated({ limit = 10, order = null, page = 1 }) {
+    static async getAllPaginated({ limit = 10, order = null, page = 1, query = null}) {
 
         let config = {
             limit,
@@ -11,7 +11,18 @@ class ProductsDAO {
             sort: order ? { [order.split('-')[0]]: order.split('-')[1] === 'desc' ? -1 : 1 } : undefined
         };
 
-        return await productsSchema.paginate({}, config);
+        // la query es para buscar por categoria, si dice stock es todos los productos con stock mayor a 0
+        if (query) {
+            if (query === 'stock') {
+                query = { stock: { $gt: 0 } };
+            } else if (query == 'undefined') {
+                query = {};
+            } else {
+                // que no sea case sensitive
+                query = { category: { $regex: new RegExp(query, 'i') } };
+            }
+        }
+        return await productsSchema.paginate(query, config);
     }
 
     static async getAll({ limit = 10, orderBy = null }) {

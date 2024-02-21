@@ -17,7 +17,8 @@
           <option value="32" {{#if (isEqual products.limit 32 )}}selected{{/if}}>32</option>
         </select>
       </div>
-      <a href="/products/agregar" class="btn btn-dark">Agregar</a>
+      <a class="btn btn-secondary p-2 mx-2" href="/products?query=stock">Disponibles</a>
+      <a href="/products/agregar" class="btn btn-dark mx-2">Agregar</a>
     </div>
   </div>
 
@@ -30,7 +31,7 @@
       <div class="card mb-4" style="padding: 0; height: 90%;">
         <div class="card-body">
           <h5 class="card-title">{{title}}</h5>
-          <small>{{category}}</small>
+          <a href="/products?query={{category}}" class="text-decoration-none text-secondary">{{category}}</a>
           {{#if stock}}
           <p class="card-text text-success d-flex justify-content-between">
             <span>${{price}}</span>
