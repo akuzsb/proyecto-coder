@@ -59,7 +59,6 @@ export const logout = (req, res) => {
 
 export const register = async (req, res) => {
     let { first_name, last_name, email, password, age } = req.body;
-    console.log(req.body)
     if (!first_name || !last_name || !email || !password || !age) {
         return res.status(400).send({
             message: 'Todos los campos son requeridos',

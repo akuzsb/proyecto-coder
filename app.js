@@ -73,7 +73,6 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
     if (req.session.user) {
-        console.log('session', req.session.user)
         res.render('home', { user: req.session.user });
     } else {
         res.redirect('/login');
