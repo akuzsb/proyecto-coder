@@ -1,8 +1,11 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
-import 'dotenv/config';
 import { Server } from 'socket.io';
 import mongoose from 'mongoose';
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
+import cookieParser from 'cookie-parser';
+import 'dotenv/config';
 import __dirname, { MONGO_URI } from './src/utils.js';
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -20,7 +23,7 @@ const isEqual = (str1, str2) => {
 
 app.engine('handlebars', engine({
     helpers: {
-        isEqual 
+        isEqual
     }
 }));
 app.set('views', __dirname + '/views');
@@ -32,9 +35,22 @@ import productsRouter from './src/routes/products.router.js';
 import cartsRouter from './src/routes/carts.router.js';
 import productsViewRouter from './src/routes/productsViewRouter.js';
 import cartsViewRouter from './src/routes/cartsViewRouter.js';
+import loginViewRouter from './src/routes/loginViewRouter.js';
+import loginRouter from './src/routes/login.router.js';
+import { checkLogin } from './src/middlewares/checkLogin.js';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser());
+app.use(session({
+    store: MongoStore.create({ mongoUrl: MONGO_URI }),
+    secret: 'secretMongo',
+    resave: true,
+    saveUninitialized: true,
+    ttl: 10 * 24 * 60 * 60
+}));
+
 
 let connected = false;
 try {
@@ -55,22 +71,25 @@ app.use((req, res, next) => {
     }
 });
 
-app.get('/', (req, res) => { res.redirect('/home') });
-
-app.get('/home', (req, res) => {
-    res.render('home');
+app.get('/', (req, res) => {
+    if (req.session.user) {
+        console.log('session', req.session.user)
+        res.render('home', { user: req.session.user });
+    } else {
+        res.redirect('/login');
+    }
 });
 
+app.use('/login', loginViewRouter);
 app.use('/products', productsViewRouter);
 app.use('/cart', cartsViewRouter);
-app.get('/chat', (req, res) => {
+app.get('/chat', checkLogin, (req, res) => {
     res.render('chat');
 });
 
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
-
-
+app.use('/api/users', loginRouter);
 
 import MessagesDAO from './src/dao/messagesDao.js';
 
