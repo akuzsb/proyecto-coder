@@ -5,10 +5,12 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import cookieParser from 'cookie-parser';
+import passport from 'passport';
 import 'dotenv/config';
 import __dirname, { MONGO_URI } from './src/utils.js';
 const app = express();
 const PORT = process.env.PORT || 4000;
+import initializePassport from './src/config/passport.config.js';
 
 
 const httpServer = app.listen(PORT, () => {
@@ -50,6 +52,9 @@ app.use(session({
     saveUninitialized: true,
     ttl: 10 * 24 * 60 * 60
 }));
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 let connected = false;
@@ -108,3 +113,5 @@ socketServer.on('connection', async (socket) => {
 app.use((req, res) => {
     res.status(404).send('404 - Not Found');
 });
+
+app.disable('x-powered-by');

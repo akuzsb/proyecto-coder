@@ -1,38 +1,17 @@
 import UsersDAO from '../dao/usersDao.js';
+import {encryptPassword, comparePassword} from '../utils/encrypt.utils.js';
 
 export const login = async (req, res) => {
-    let { email, password } = req.body;
-    if (!email || !password) {
-        res.status(400).send({
-            message: 'email and password are required',
-            status: 'error',
-            input: 'email'
-        });
-    }
-    
-    let user = await UsersDAO.getUserByEmail(email);
-    if (!user) {
+    const { user } = req.session.passport;
+    let userLogged = await UsersDAO.getUserById(user);
+    if (!userLogged) {
         return res.status(400).send({
             message: 'Usuario no encontrado',
-            status: 'error',
-            input: 'email'
-        });
-    }
-    if (user.password !== password) {
-        return res.status(400).send({
-            message: 'Contraseña incorrecta',
-            status: 'error',
-            input: 'password'
+            status: 'error'
         });
     }
 
-    const userSession = {
-        id: user._id,
-        email: user.email,
-        first_name: user.first_name,
-        role: user.role
-    }
-    req.session.user = userSession;
+    req.session.user = userLogged;
 
     res.send({
         'message': 'Usuario logueado',
@@ -74,6 +53,9 @@ export const register = async (req, res) => {
                 input: 'email'
             });
         }
+
+        password = await encryptPassword(password);
+        
         user = await UsersDAO.addUser({ first_name, last_name, email, password, age });
         res.send({
             message: 'Usuario registrado',
