@@ -30,8 +30,8 @@ loginForm.addEventListener('submit', async (e) => {
                 input.insertAdjacentHTML('afterend', html);
                 input.focus();
             } else {
-                // si no, mostrar el mensaje en un alert
-                alert(json.message);
+                let html = `<div class="alert alert-danger m-1 response">${json.message}</div>`;
+                loginForm.insertAdjacentHTML('afterbegin', html);
             }
         }
     } catch (error) {
@@ -40,5 +40,5 @@ loginForm.addEventListener('submit', async (e) => {
         let html = `<div class="alert alert-danger m-1 response">Hubo un error, intente nuevamente</div>`;
         loginForm.insertAdjacentHTML('afterbegin', html);
     }
-    
+
 });
