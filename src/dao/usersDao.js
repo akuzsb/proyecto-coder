@@ -9,6 +9,10 @@ class UsersDAO {
     static async getUserByEmail(email) {
         return await usersSchema.findOne({ email });
     }
+
+    static async getUserById(id) {
+       return await usersSchema.findById(id, { password: 0 });
+    }
 }
 
 export default UsersDAO;
