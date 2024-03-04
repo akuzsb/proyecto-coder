@@ -1,5 +1,6 @@
 import passport from "passport";
 import { Strategy } from "passport-local";
+import GithubStrategy from "passport-github2";
 import User from "../dao/usersDao.js";
 import { comparePassword, encryptPassword } from "../utils/encrypt.utils.js";
 
@@ -53,6 +54,36 @@ const initializePassport = () => {
 		} catch (error) {
 			console.log(error)
 			return done(null, false, { message: "Hubo un error al loguear el usuario" });
+		}
+	}))
+
+	passport.use(new GithubStrategy({
+		clientID: process.env.GITHUB_CLIENT_ID,
+		clientSecret: process.env.GITHUB_CLIENT_SECRET,
+		callbackURL: "http://localhost:4000/api/users/githubcallback"
+	}, async (accessToken, refreshToken, profile, done) => {
+		try {
+			if (!profile._json.email) {
+				return done(null, false, { message: "Email is required" });
+			}
+			let user = await User.getUserByEmail(profile._json.email)
+			if (!user) {
+				let newUser = {
+					first_name: profile._json.name,
+					last_name: '',
+					age: 18,
+					email: profile._json.email,
+					password: ''
+				}
+
+				let result = await User.addUser(newUser);
+				done(null, result);
+			} else {
+				done(null, user);
+			}
+		} catch (error) {
+			console.log(error)
+			done(null, false, { message: "Hubo un error al loguear el usuario" });
 		}
 	}))
 

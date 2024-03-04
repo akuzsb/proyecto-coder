@@ -69,3 +69,9 @@ export const register = async (req, res) => {
         });
     }
 }
+
+export const loginGithub = (req, res) => {
+    const { first_name, last_name, email, age, role, _id } = req.user;
+    req.session.user = { first_name, last_name, email, age, role, _id };
+    res.redirect('/');
+}
