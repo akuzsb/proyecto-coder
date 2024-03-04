@@ -18,7 +18,6 @@ const httpServer = app.listen(PORT, () => {
 });
 
 export const socketServer = new Server(httpServer);
-// Helper function to compare two strings
 const isEqual = (str1, str2) => {
     return str1 === str2;
 };
@@ -113,5 +112,4 @@ socketServer.on('connection', async (socket) => {
 app.use((req, res) => {
     res.status(404).send('404 - Not Found');
 });
-
 app.disable('x-powered-by');
