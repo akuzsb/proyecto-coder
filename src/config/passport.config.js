@@ -60,19 +60,22 @@ const initializePassport = () => {
 	passport.use(new GithubStrategy({
 		clientID: process.env.GITHUB_CLIENT_ID,
 		clientSecret: process.env.GITHUB_CLIENT_SECRET,
-		callbackURL: "http://localhost:4000/api/users/githubcallback"
+		callbackURL: `${process.env.API_URL}/api/users/githubcallback`,
+		scope: ['user:email']
 	}, async (accessToken, refreshToken, profile, done) => {
 		try {
-			if (!profile._json.email) {
-				return done(null, false, { message: "Email is required" });
+			console.log(profile)
+			let email = profile._json.email || profile.emails[0].value;
+			if (!email) {
+				return done(null, false, { message: "Email is required. Please verify your email is public on your github profile and try again." });
 			}
-			let user = await User.getUserByEmail(profile._json.email)
+			let user = await User.getUserByEmail(email)
 			if (!user) {
 				let newUser = {
 					first_name: profile._json.name,
 					last_name: '',
 					age: 18,
-					email: profile._json.email,
+					email,
 					password: ''
 				}
 
