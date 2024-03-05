@@ -16,7 +16,7 @@ router.get('/failregister', (req, res) => {
 	res.status(400).send({ message: req.session.messages.pop(), status: 'error' });
 });
 router.get('/failgithub', (req, res) => {
-	res.render('error', { message: 'Error al loguear con github' });
+	res.render('error', { message: req.session.messages.pop(), status: 'error' });
 });
 // /api/users/login/github
 router.get('/login/github', passport.authenticate('github', { scope: ['user:email'] }));
